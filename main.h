@@ -1,11 +1,11 @@
 #ifndef main
 #define main
 
-int enum PinPointRegisterMap {
+enum PinPointRegisterMap {
   unused,
   ID,
   VERSION,
-  STATUS,
+  DEVICE_STATUS,
   CONTROL,
   LOOP_TIME,
   RAW_X_ENCODER_VAL,
