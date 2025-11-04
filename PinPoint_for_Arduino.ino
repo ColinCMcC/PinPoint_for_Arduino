@@ -1,7 +1,6 @@
 #include <Wire.h>
 
 #define PINPOINT_ADDRESS 0x31  // Replace with the actual I2C address
-#define POSITION_REGISTER1 8   // Register address for position 1
 // Add more registers as needed
 
 void setup() {
@@ -14,7 +13,7 @@ void loop() {
 
   // For reading position registers
   Wire.beginTransmission(PINPOINT_ADDRESS);
-  Wire.write(POSITION_REGISTER1);
+  Wire.write(8);
   Wire.endTransmission(false);
 
   delay(25);  // Delay for the register to be ready
@@ -26,8 +25,9 @@ void loop() {
     }
   }
 
-  // Convert bytes to a meaningful value (depends on Pinpoint module's data format)
-  int32_t value = (buffer[3] << 24) | (buffer[2] << 16) | (buffer[1] << 8) | buffer[0];
+  // Convert 4 bytes to float
+  float value;
+  memcpy(&value, buffer, 4);
 
   Serial.print("Received 4 bytes: ");
   for (int i = 0; i < 4; i++) {
@@ -35,8 +35,8 @@ void loop() {
     Serial.print(" ");
   }
   Serial.println();
-  Serial.print("Interpreted value: ");
-  Serial.println(value);
+  Serial.print("Interpreted float value: ");
+  Serial.println(value, 6);  // Print with 6 decimal places
 
   Serial.print("\n");
   delay(100);  // Adjust delay as necessary
