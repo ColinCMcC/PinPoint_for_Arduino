@@ -1,12 +1,14 @@
-// LED.h
-#ifndef PinPoint_h
-#define PinPoint_h
+#ifndef PinPoint
+#define PinPoint 1
 
-#include <Arduino.h>
 #include <Wire.h>
 
-class PinPointModule {
-private:
+#define PINPOINT_ADDRESS 0x31
+
+
+class PinPointModule(int asdf) {
+public:
+
   struct PinPointData {
     float
       xPos,
@@ -43,25 +45,10 @@ private:
     BULK_READ,
   };
 
-
-  int _address;
-
-  float
-    _xPos,
-    _yPos,
-    _hDirection;
-
-
   float readFloatRegister(enum PinPointRegisterMap reg);
-
-public:
-
-  PinPointModule(int address);
-
   float xPos();
   float yPos();
-  float hDirection();
-  void update();
+  float orientation();
 };
 
 #endif

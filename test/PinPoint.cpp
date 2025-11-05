@@ -1,6 +1,9 @@
 #include "PinPoint.h"
 
-float readFloatRegister(enum PinPointRegisterMap reg) {
+PinPointModule::PinPointModule(int asdf) {
+}
+
+float PinPointModule::readFloatRegister(enum PinPointRegisterMap reg) {
   uint8_t buffer[4];
 
   // Start I2C communication and request specific register
@@ -23,4 +26,16 @@ float readFloatRegister(enum PinPointRegisterMap reg) {
   memcpy(&value, buffer, 4);
 
   return value;
+}
+
+float PinPointModule::xPos() {
+  return 0;
+}
+
+float PinPointModule::yPos() {
+  return 0;
+}
+
+float PinPointModule::orientation() {
+  return 0;
 }

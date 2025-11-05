@@ -1,20 +1,19 @@
+// main code: ArduinoGetStarted.com.ino
 #include "main.h"
 
+
 void setup() {
-  Serial.begin(115200);
-  Wire.begin();
+  Serial.begin(9600);
 }
 
 void loop() {
+  Serial.print("LED 1 state: ");
+  Serial.println(led1.xPos());
 
-  float xPos = readFloatRegister(Y_POS);
+  delay(2000);
 
-  Serial.println();
-  Serial.print("Interpreted float value: ");
-  Serial.println(xPos, 6);  // Print with 6 decimal places
+  Serial.print("LED 1 state: ");
+  Serial.println(led1.xPos());
 
-  Serial.print("\n");
-  delay(100);  // Adjust delay as necessary
+  delay(2000);
 }
-
-

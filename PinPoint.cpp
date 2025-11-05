@@ -1,0 +1,46 @@
+// LED.cpp
+#include "PinPoint.h"
+
+// Default PinPoint i2c address is 0x31
+PinPointModule::PinPointModule(int address) {
+}
+
+float PinPointModule::xPos() {
+  return _xPos;
+}
+
+float PinPointModule::yPos() {
+  return _yPos;
+}
+
+float PinPointModule::hDirection() {
+  return _hDirection;
+}
+
+void PinPointModule::update() {
+}
+
+float PinPointModule::readFloatRegister(enum PinPointRegisterMap reg) {
+  uint8_t buffer[4];
+
+  // Start I2C communication and request specific register
+  Wire.beginTransmission(_address);
+  Wire.write(static_cast<uint8_t>(reg));  // Send register address
+  Wire.endTransmission();
+
+  // Request 4 bytes
+  Wire.requestFrom(_address, 4);
+
+  // Read 4 bytes
+  for (int i = 0; i < 4; i++) {
+    if (Wire.available()) {
+      buffer[i] = Wire.read();
+    }
+  }
+
+  // Convert to float
+  float value;
+  memcpy(&value, buffer, 4);
+
+  return value;
+}
