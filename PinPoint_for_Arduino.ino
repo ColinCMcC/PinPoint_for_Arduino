@@ -4,10 +4,11 @@
 
 void setup() {
   Serial.begin(115200);
+  Wire.begin();
 }
 
 void loop() {
-  pinPoint.update();
+  //pinPoint.update();
 
   Serial.print("X Pos: ");
   Serial.println(pinPoint.readFloatRegister(8));

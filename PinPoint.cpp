@@ -6,7 +6,6 @@ PinPointModule::PinPointModule(int address) {
 }
 
 float PinPointModule::xPos() {
-  data.xPos = PinPointRegisterMap(X_POS);
 
   return data.xPos;
 }

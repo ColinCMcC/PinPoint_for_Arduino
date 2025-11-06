@@ -21,6 +21,15 @@ private:
       yawOffset = 0;
   };
 
+
+
+
+  int _address;
+  PinPointData data;
+
+
+
+public:
   enum PinPointRegisterMap {
     unused,
     ID,
@@ -42,14 +51,6 @@ private:
     YAW_OFFSET,
     BULK_READ,
   };
-
-
-  int _address;
-  PinPointData data;
-
-  
-
-public:
 
   PinPointModule(int address);
 
