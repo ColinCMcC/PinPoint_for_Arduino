@@ -5,6 +5,6 @@
 
 #include "PinPoint.h"
 
-PinPointModule led1(0x31); // create a LED object that attach to pin 2
+PinPointModule pinPoint(0x31); // create a PinPoint object with the address of the PinPoint
 
 #endif

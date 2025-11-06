@@ -3,17 +3,14 @@
 
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
-  Serial.print("LED 1 state: ");
-  Serial.println(led1.xPos());
+  pinPoint.update();
 
-  delay(2000);
+  Serial.print("X Pos: ");
+  Serial.println(pinPoint.readFloatRegister(8));
 
-  Serial.print("LED 1 state: ");
-  Serial.println(led1.xPos());
-
-  delay(2000);
+  delay(250);
 }

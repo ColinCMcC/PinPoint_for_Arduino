@@ -9,16 +9,16 @@ class PinPointModule {
 private:
   struct PinPointData {
     float
-      xPos,
-      yPos,
-      hOri,
-      xVel,
-      yVel,
-      hVel,
-      ticksPerMM,
-      xPodOffset,
-      yPodOffset,
-      yawOffset;
+      xPos = 0,
+      yPos = 0,
+      hDir = 0,
+      xVel = 0,
+      yVel = 0,
+      hVel = 0,
+      ticksPerMM = 0,
+      xPodOffset = 0,
+      yPodOffset = 0,
+      yawOffset = 0;
   };
 
   enum PinPointRegisterMap {
@@ -45,14 +45,9 @@ private:
 
 
   int _address;
+  PinPointData data;
 
-  float
-    _xPos,
-    _yPos,
-    _hDirection;
-
-
-  float readFloatRegister(enum PinPointRegisterMap reg);
+  
 
 public:
 
@@ -60,8 +55,9 @@ public:
 
   float xPos();
   float yPos();
-  float hDirection();
+  float hDir();
   void update();
+  float readFloatRegister(int reg);
 };
 
 #endif

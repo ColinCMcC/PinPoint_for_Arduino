@@ -6,21 +6,23 @@ PinPointModule::PinPointModule(int address) {
 }
 
 float PinPointModule::xPos() {
-  return _xPos;
+  data.xPos = PinPointRegisterMap(X_POS);
+
+  return data.xPos;
 }
 
 float PinPointModule::yPos() {
-  return _yPos;
+  return data.yPos;
 }
 
-float PinPointModule::hDirection() {
-  return _hDirection;
+float PinPointModule::hDir() {
+  return data.hDir;
 }
 
 void PinPointModule::update() {
 }
 
-float PinPointModule::readFloatRegister(enum PinPointRegisterMap reg) {
+float PinPointModule::readFloatRegister(int reg) {
   uint8_t buffer[4];
 
   // Start I2C communication and request specific register
